@@ -27,6 +27,7 @@ class Scene:
         for obj in self.objects:
             if obj.check_hit(ray.origin, ray.direction):
                 print(f"$$GOLPEASTE AL OBJETO: {obj.name}!!")
+                return 
 
     def on_resize(self, width, height):
         self.ctx.viewport = (0, 0, width, height)

@@ -20,9 +20,9 @@ cube5 = Cube((0, 2, 0), (0, 0, 0), (1, 1, 1), name="Cube5")
 # Escena
 scene = Scene(window.ctx, camera)
 #scene.add_object(cube1, shader_program)
-scene.add_object(cube2, shader_program)
+ #scene.add_object(cube2, shader_program)
 scene.add_object(cube3, shader_program) #añado los cubos a la escena con el shader
-scene.add_object(cube4, shader_program) #añado los cubos a la escena con el shader
+ #scene.add_object(cube4, shader_program) #añado los cubos a la escena con el shader
 #scene.add_object(cube5, shader_program)
 #añado los cubos a la escena con el shader
 # Carga de la escena y ejecución del loop principal
