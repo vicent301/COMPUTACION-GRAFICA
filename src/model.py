@@ -4,21 +4,23 @@ class Vertex:
         self.__format = format 
         self.__array = array
 
-        @property
-        def name(self): 
-            return self.__name
-        @property
-        def format(self):   
-            return self.__format
-        @property
-        def array(self):   
-            return self.__array
+    @property
+    def name(self): 
+        return self.__name
+      
+    @property
+    def format(self):   
+        return self.__format
+    
+    @property
+    def array(self):   
+        return self.__array
         
 class VertexLayout:
     def __init__(self):
         self.__attributes = []
 
-    def add_atribute(self, name: str, format: str, array):
+    def add_attribute(self, name: str, format: str, array):
         self.__attributes.append(Vertex(name, format, array))
     
     def get_attributes(self):

@@ -26,7 +26,7 @@ class ShaderProgram:
             uniform = self.prog[name]
             if isinstance(value, glm.mat4):
                 uniform.write(value.to_bytes())
-            elif isinstance(uniform, "value"):
+            elif hasattr(uniform, "value"):
                     uniform.value = value
          
         
