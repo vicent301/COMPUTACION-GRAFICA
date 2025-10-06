@@ -13,18 +13,19 @@ WIDTH, HEIGHT = 800, 600
 
 # Ventana
 window = Window(WIDTH, HEIGHT, "Basic Graphic Engine") #una ventana de 800x600
+
+# Cámara
+camera = Camera((0, 0, 6), (0, 0, 0), (0, 1, 0), 45, window.width / window.height, 0.1, 100.0) 
+
 # Shader
 shader_program = ShaderProgram(window.ctx, '../shaders/basic.vert', '../shaders/basic.frag') #carga los shaders very y frag
 shader_program_skybox = ShaderProgram(window.ctx, '../shaders/sprite.vert', '../shaders/sprite.frag') #carga los shaders very y frag
 
 #textura
-skybox_texture = Texture(width=WIDTH, height=HEIGHT,channels_amount=3  , color=(0, 0, 0)) #crea una textura del color del cielo
+skybox_texture = Texture(width=WIDTH, height=HEIGHT, channels_amount=3, color=(0, 0, 0)) #crea una textura del color del cielo
 
 material = Material(shader_program)
 material_sprite = Material(shader_program_skybox, textures_data = [skybox_texture])
-
-# Cámara
-camera = Camera((0, 0, 6), (0, 0, 0), (0, 1, 0), 45, window.width / window.height, 0.1, 100.0) 
 
 
 #Quad 
@@ -39,9 +40,9 @@ quad = Quad((0,0,0), (0,0,0), (6,5,1), name="Sprite")
 #creo dos cubos  en posiciones diferentes
 # Escena
 scene = RayScene(window.ctx, camera, WIDTH, HEIGHT) #crea una escena con la camara y el contexto de la ventana
+scene.add_object(quad, material_sprite) #añado el quad a la escena con el shader
 scene.add_object(cube1, material)
 scene.add_object(cube2, material)
-scene.add_object(quad, material_sprite) #añado el quad a la escena con el shader
  #añado los cubos a la escena con el shader
  #scene.add_object(cube4, shader_program) #añado los cubos a la escena con el shader
 #scene.add_object(cube5, shader_program)

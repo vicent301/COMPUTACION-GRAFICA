@@ -1,8 +1,9 @@
 import glm
 
 class Hit:
-    def __init__(self, get_model_matrix):
+    def __init__(self, get_model_matrix, hittable = True):
         self.__model_matrix = get_model_matrix
+        
 
     @property
     def model_matrix(self):

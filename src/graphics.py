@@ -6,8 +6,8 @@ class Graphics:
 
         # Crear buffers dinámicamente
         self.__vbo = self.create_buffers()
-        self.__ibo = ctx.buffer(model.indices.tobytes())
-        self.__vao = ctx.vertex_array(material.shader_program.prog, [*self.__vbo], self.__ibo)
+        self.__ibo = self.__ctx.buffer(model.indices.tobytes())
+        self.__vao = self.__ctx.vertex_array(material.shader_program.prog, [*self.__vbo], self.__ibo)
 
         # Cargar texturas
         self.__textures = self.load_textures(material.textures_data)
@@ -42,22 +42,19 @@ class Graphics:
 
     def update_texture(self, texture_name, new_data):
         if texture_name not in self.__textures:
-            raise ValueError(f"NO EXISTE LA TEXTURAA {texture_name}")
+            raise ValueError(f"No existe la textura {texture_name}")
         
         texture_obj, texture_ctx = self.__textures[texture_name]
         texture_obj.update_data(new_data)
         texture_ctx.write(texture_obj.get_bytes())
 
     def render(self, uniforms):
-        # Actualizar uniforms dinámicos
         for name, value in uniforms.items():
             if name in self.__material.shader_program.prog:
                 self.__material.set_uniform(name, value)
 
-        # Bind de texturas
-        for i, (name, texture_ctx) in enumerate(self.__textures):
-            texture_ctx.use(i)
+        for i, (name, (tex_obj, tex_ctx)) in enumerate(self.__textures.items()):
+            tex_ctx.use(i)
             self.__material.shader_program.set_uniform(name, i)
 
-        # Dibujar
         self.__vao.render()
