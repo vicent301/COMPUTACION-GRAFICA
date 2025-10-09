@@ -8,7 +8,7 @@ class Window(pyglet.window.Window):
         self.ctx = moderngl.create_context()
         self.scene = None
 
-        pyglet.clock.schedule_interval(self.update, 1/60.0)
+        #pyglet.clock.schedule_interval(self.update, 1/60.0)
 
     def set_scene(self, scene):
         self.scene = scene
@@ -33,9 +33,9 @@ class Window(pyglet.window.Window):
         if self.scene:
             self.scene.on_resize(width, height)
 
-    def update(self, dt):
-        if self.scene:
-            self.scene.update(dt)
+    #def update(self, dt):
+    #   if self.scene:
+    #      self.scene.update(dt)
 
     def run(self):   # activar el loop de la ventana
         pyglet.app.run()

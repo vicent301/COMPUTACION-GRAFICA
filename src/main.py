@@ -7,7 +7,7 @@ from quad import Quad
 from camera import Camera
 from scene import Scene, RayScene
 import numpy as np
-
+import moderngl 
 # --- Loop principal ---
 WIDTH, HEIGHT = 800, 600
 
@@ -36,17 +36,15 @@ cube2 = Cube((2, 0, 2), (0, 45, 0), (1, 0.5, 1), name="Cube2")
 
 quad = Quad((0,0,0), (0,0,0), (6,5,1), name="Sprite")
 
+window.ctx.enable(moderngl.DEPTH_TEST)
 
-#creo dos cubos  en posiciones diferentes
+
 # Escena
 scene = RayScene(window.ctx, camera, WIDTH, HEIGHT) #crea una escena con la camara y el contexto de la ventana
 scene.add_object(quad, material_sprite) #añado el quad a la escena con el shader
 scene.add_object(cube1, material)
 scene.add_object(cube2, material)
- #añado los cubos a la escena con el shader
- #scene.add_object(cube4, shader_program) #añado los cubos a la escena con el shader
-#scene.add_object(cube5, shader_program)
-#añado los cubos a la escena con el shader
+
 # Carga de la escena y ejecución del loop principal
 window.set_scene(scene)
 window.run()

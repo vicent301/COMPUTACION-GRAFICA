@@ -45,9 +45,9 @@ class Scene:
         self.__ctx.viewport = (0, 0, width, height)
         self.__camera.projection = glm.perspective(glm.radians(45), width / height, 0.1, 100.0)
 
-    def update(self, dt):
-        for obj in self.__objects:
-            obj.rotation.y += 20 * dt  # Rotar 20 grados por segundo
+    #def update(self, dt):
+     #   for obj in self.__objects:
+      #      obj.rotation.y += 20 * dt  # Rotar 20 grados por segundo
 
 
 #   Clase RayScene (para el RayTracer CPU)
