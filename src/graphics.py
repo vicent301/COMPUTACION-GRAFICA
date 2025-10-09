@@ -58,3 +58,13 @@ class Graphics:
             self.__material.shader_program.set_uniform(name, i)
 
         self.__vao.render()
+        
+    
+class ComputeGraphics(Graphics):
+    def __init__(self, ctx, model, material):
+        self__ctx = ctx
+        self.__model = model
+        self.__material = material
+        self.textures = material.textures_data
+        
+        super().__init__(ctx, model, material)

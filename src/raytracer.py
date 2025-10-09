@@ -1,5 +1,5 @@
 from texture import Texture
-
+from shader_program import ComputeShaderProgram
 class RayTracer: 
     def __init__(self, camera, width, height):
         self.camera = camera
@@ -27,4 +27,14 @@ class RayTracer:
 
     def get_texture(self):
         return self.framebuffer.image_data
-            
+        
+        
+
+class RayTracerGPU:
+    def __init__(self,ctx,camera,width,height, output_graphics):
+        self.ctx = ctx
+        self.camera = camera
+        self.width, self.height = width, height
+        self.camera = camera
+        self.compute_shader = ComputeShaderProgram(self.ctx, "shaders/raytracing.comp")
+        self.output_graphics = output_graphics
