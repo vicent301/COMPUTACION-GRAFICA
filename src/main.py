@@ -34,7 +34,7 @@ material_sprite = Material(shader_program_skybox, textures_data = [skybox_textur
 cube1 = Cube((-2, 0, 2), (0, 45, 0), (1, 1, 1), name="Cube1")
 cube2 = Cube((2, 0, 2), (0, 45, 0), (1, 0.5, 1), name="Cube2")
 
-quad = Quad((0,0,0), (0,0,0), (6,5,1), name="Sprite")
+quad = Quad((0,0,0), (0,0,0), (6,5,1), name="Sprite", hittable = False) #un quad grande que hace de fondo (skybox)
 
 window.ctx.enable(moderngl.DEPTH_TEST)
 

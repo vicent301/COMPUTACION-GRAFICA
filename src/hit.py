@@ -3,7 +3,7 @@ import glm
 class Hit:
     def __init__(self, get_model_matrix, hittable = True):
         self.__model_matrix = get_model_matrix
-        
+        self.hittable = hittable
 
     @property
     def model_matrix(self):
@@ -29,10 +29,12 @@ class Hit:
     def check_hit(self, origin, direction):
         raise NotImplementedError("Subclasses should implement this method.")
 class HitBoxOBB(Hit):
-        def __init__(self, get_model_matrix):
-            super().__init__(get_model_matrix)
+        def __init__(self, get_model_matrix, hittable = True):
+            super().__init__(get_model_matrix, hittable)
         
         def check_hit(self, origin, direction):
+            if (not self.hittable):
+                return False
             origin = glm.vec3(origin)
             direction = glm.normalize(glm.vec3(direction))
 
@@ -60,10 +62,12 @@ class HitBoxOBB(Hit):
 
             return t_near <= t_far and t_far >= 0
 class HitBox(Hit):
-    def __init__(self, position=(0,0,0), scale=(1,1,1)):
-        super().__init__(position, scale)
+    def __init__(self, position=(0,0,0), scale=(1,1,1), hittable = True):
+        super().__init__(position, scale, hittable)
 
     def check_hit(self, origin, direction):
+        if (not self.hittable):
+            return False
         origin = glm.vec3(origin)
         direction = glm.normalize(glm.vec3(direction))
 
