@@ -50,7 +50,7 @@ class Quad(Model):
             2, 3, 0
         ], dtype="i4")
 
-
+        self.__vertices = vertices
         super().__init__(vertices, indices, colors= colors, texcoords=texcoords, normals=normals)
 
     @property

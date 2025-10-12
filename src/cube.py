@@ -42,6 +42,8 @@ class Cube(Model):
             3,2,6, 6,7,3, 0,1,5, 5,4,0 
         ], dtype='i4') 
 
+        self.__vertices = vertices
+
         super().__init__(vertices, indices, colors, normals, texcoords) 
 
     @property
