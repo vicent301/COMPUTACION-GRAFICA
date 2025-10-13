@@ -1,7 +1,6 @@
 import numpy as np 
 import glm
 
-
 class Graphics:
     def __init__(self, ctx, model, material):
         self.__ctx = ctx
