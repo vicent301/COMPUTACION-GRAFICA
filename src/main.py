@@ -55,9 +55,10 @@ material_ceramic = StandardMaterial(shader, albedo_pearl, reflectivity=0.1)
 material_sprite = Material(shader_sprite, textures_data=[sprite_texture])
 
 
-cube1 = Cube((2, 0, 5), (0, 45, 0), (1, 1, 1), name="Cube1")
-cube2 = Cube((-2, 0, 5), (0, 45, 0), (1, 1, 1), name="Cube2")
-quad = Quad((0, -2, 0), (-90, 0, 0), (10, 15, 1), name="Floor", animated=False)
+cube1 = Cube((2, 1, 5), (0, 45, 0), (1, 1, 1), name="Cube1")
+cube2 = Cube((-2, 1, 5), (0, 45, 0), (1, 1, 1), name="Cube2")
+#quad = Quad((0, 2, 0), (-90, 0, 0), (10, 15, 1), name="Floor", animated=False) #cpu
+quad = Quad((0, -2, 0), (-90, 0, 0), (10, 15, 1), name="Floor", animated=False) #gpu
 sprite = Quad((0, 0, 0), (0, 0, 0), (10, 15, 1), name="Sprite", animated=False, hittable=False)
 
 
