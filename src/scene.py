@@ -126,7 +126,7 @@ class RaySceneGPU(Scene):
 
     
     def _update_matrix(self):
-        self_primitives = []
+        self.primitives = []
             
         for i,(name,graphics) in enumerate(self.graphics.items()):
             graphics.create_primitive(self.primitives)
